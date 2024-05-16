@@ -1,0 +1,14 @@
+{
+  "language": "言語",
+  "button": {
+    "download_resume": "履歴書をダウンロード"
+  },
+  "projects": {
+    "title": "私のプロジェクト",
+    "description": "私が取り組んだプロジェクトのいくつかを紹介します。",
+    "link": {
+      "project": "プロジェクト",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/app/[lang]/globals.css";
+import type { Language } from "@/types/language";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,12 +11,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  params: { lang },
   children,
 }: Readonly<{
+  params: { lang: Language };
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body className={inter.className}>{children}</body>
     </html>
   );
