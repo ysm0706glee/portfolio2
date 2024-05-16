@@ -1,0 +1,14 @@
+{
+  "language": "Language",
+  "button": {
+    "download_resume": "Download Resume"
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": " Here are some of the projects I've worked on.",
+    "link": {
+      "project": "Project",
+      "github": "GitHub"
+    }
+  }
+}
