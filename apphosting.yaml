@@ -1,0 +1,6 @@
+# Environment variables and secrets
+env:
+  - variable: MICROCMS_SERVICE_DOMAIN
+    secret: MICROCMS_SERVICE_DOMAIN
+  - variable: MICROCMS_API_KEY
+    secret: MICROCMS_API_KEY
