@@ -1,3 +1,5 @@
+type ConfigKeys = keyof typeof config;
+
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -9,9 +11,10 @@ const config = {
 
 // When deployed, there are quotes that need to be stripped
 Object.keys(config).forEach((key) => {
-  const configValue = config[key] + "";
+  const typedKey = key as ConfigKeys;
+  const configValue = config[typedKey] + "";
   if (configValue.charAt(0) === '"') {
-    config[key] = configValue.substring(1, configValue.length - 1);
+    config[typedKey] = configValue.substring(1, configValue.length - 1);
   }
 });
 
