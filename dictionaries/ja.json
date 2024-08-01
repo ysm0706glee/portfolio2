@@ -10,5 +10,10 @@
       "project": "プロジェクト",
       "github": "GitHub"
     }
+  },
+  "blog": {
+    "title": "私のブログ",
+    "description": "最新のブログ記事をチェックしてください。",
+    "read_more": "続きを読む"
   }
 }

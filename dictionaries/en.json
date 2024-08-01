@@ -10,5 +10,10 @@
       "project": "Project",
       "github": "GitHub"
     }
+  },
+  "blog": {
+    "title": "My Blog",
+    "description": "Check out my latest blog posts.",
+    "read_more": "Read More"
   }
 }

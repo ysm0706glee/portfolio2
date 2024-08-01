@@ -39,6 +39,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SVGProps } from "react";
 import { LANGUAGES, Language } from "@/types/language";
+import { Blogs, blogsSchema } from "@/types/blog";
 
 const fetchProfileData = async () => {
   const profile = await client.get<Profile>({
@@ -56,6 +57,14 @@ const fetchProjectsData = async () => {
   return projectsSchema.parse(projects);
 };
 
+const fetchBlogsData = async () => {
+  const projects = await client.get<Blogs>({
+    endpoint: "blogs",
+  });
+  // Validate the fetched data using Zod schema
+  return blogsSchema.parse(projects);
+};
+
 export default async function Home({
   params: { lang },
 }: {
@@ -66,6 +75,8 @@ export default async function Home({
   const profile = await fetchProfileData();
 
   const projects = await fetchProjectsData();
+
+  const blogs = await fetchBlogsData();
 
   const name = lang === "en" ? profile.name.name_en : profile.name.name_ja;
 
@@ -191,6 +202,52 @@ export default async function Home({
                       target="_blank"
                     >
                       {dict.projects.link.github}
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                {dict.blog.title}
+              </h2>
+              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                {dict.blog.description}
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {blogs.contents.map((blog) => (
+              <Card key={blog.id}>
+                <Image
+                  alt="Project Thumbnail"
+                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  height="310"
+                  src={blog.image.url}
+                  width="550"
+                />
+                <CardContent className="space-y-2 p-4">
+                  <CardTitle>
+                    {lang === "en" ? blog.title.title_en : blog.title.title_ja}
+                  </CardTitle>
+                  <CardDescription>
+                    {lang === "en"
+                      ? blog.description.description_en
+                      : blog.description.description_ja}
+                  </CardDescription>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      className="text-sm font-medium underline"
+                      href={blog.blog_url}
+                      target="_blank"
+                    >
+                      {dict.blog.read_more}
                     </Link>
                   </div>
                 </CardContent>
