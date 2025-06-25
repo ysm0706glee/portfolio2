@@ -40,6 +40,7 @@ import { Button } from "@/components/ui/button";
 import { SVGProps } from "react";
 import { LANGUAGES, Language } from "@/types/language";
 import { Blogs, blogsSchema } from "@/types/blog";
+import { GITHUB_URL, LINKEDIN_URL, ZENN_URL } from "@/urls";
 
 const fetchProfileData = async () => {
   const profile = await client.get<Profile>({
@@ -94,11 +95,14 @@ export default async function Home({
     <main className="flex flex-col min-h-[100dvh]">
       <div className="flex items-center justify-between px-4 md:px-6 py-4 border-b">
         <div className="flex items-center gap-4">
-          <Link href="#" target="_blank">
+          <Link href={LINKEDIN_URL} target="_blank">
             <LinkedinIcon className="h-6 w-6 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
           </Link>
-          <Link href="#" target="_blank">
+          <Link href={GITHUB_URL} target="_blank">
             <GithubIcon className="h-6 w-6 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
+          </Link>
+          <Link href={ZENN_URL} target="_blank">
+            <BlogIcon className="h-6 w-6 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" />
           </Link>
         </div>
         <div className="flex items-center gap-4">
@@ -321,6 +325,27 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect width="4" height="12" x="2" y="9" />
       <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function BlogIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 11a9 9 0 0 1 9 9" />
+      <path d="M4 4a16 16 0 0 1 16 16" />
+      <circle cx="5" cy="19" r="1" />
     </svg>
   );
 }
